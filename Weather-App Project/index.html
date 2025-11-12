@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App Tutorial</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bungee&family=Bungee+Spice&family=Jost:ital,wght@0,100..900;1,100..900&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="icon" href="images/weather-logo.png" type="image/png" />
+
+    
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="search">
+            <form class="weather-search">
+            <input type="text" class="searchbar" placeholder="Location...">
+            </form>
+            <div class="search-icon">
+                <button type="submit" class="btn">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+            </div>
+        </div>
+
+
+        <div class="weather-body">
+            <div class="weather-icon">
+                <img id="weather-icon" src="images/clouds.png" alt="Weather img">
+            </div>
+
+            <h1 class="temperature">    </h1>
+            <h2 class="location">    </h2>
+        </div>
+
+
+        <div class="weather-info">
+
+            <div class="humidity">
+                <img src="images/humidity.png" alt="image of warm air">
+                <h3 class="humidity-info">   <br/> <p>Humidity</p> </h3>
+            </div>
+
+            <div class="wind-speed">
+                <img src="images/wind.png" alt="image of wing flowing">
+                <h3 class="wind-speed-info">   <br> <p>Wind Speed</p> </h3>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+
+        const apiKey = "4c94bb16aa522d8b9dec77aa0e7756c0";
+        const apiUrl = "https://api.openweathermap.org/data/2.5/weather?units=metric&q=";
+
+        
+        
+
+
+        async function showWeatherInfo(city) {
+            const response = await fetch(apiUrl + city + `&appid=${apiKey}`);
+            var data = await response.json();
+
+            console.log(data);
+
+            document.querySelector(".temperature").innerHTML = Math.round(data.main.temp) + "°c";
+            document.querySelector(".location").innerHTML = data.name;
+            document.querySelector(".humidity-info").innerHTML = `${data.main.humidity} % <br/> <p>Humidity</p>`;
+            document.querySelector(".wind-speed-info").innerHTML = `${data.wind.speed} km/h <br> <p>Wind Speed</p>`;
+
+
+
+            if(data.weather[0].main == "Clouds"){
+                document.getElementById("weather-icon").src = "images/clouds.png";
+            }else if(data.weather[0].main == "Clear"){
+                document.getElementById("weather-icon").src = "images/clear.png";
+            }else if(data.weather[0].main == "Rain"){
+                document.getElementById("weather-icon").src = "images/rain.png";
+            }else if(data.weather[0].main == "Drizzle"){
+                document.getElementById("weather-icon").src = "images/drizzle.png";
+            }else if(data.weather[0].main == "Mist"){
+                document.getElementById("weather-icon").src = "images/mist.png";
+            }else if(data.weather[0].main == "Snow"){
+                document.getElementById("weather-icon").src = "images/snow.png";
+            }
+
+            searchBox.value = "";
+        }
+
+        const searchBox = document.querySelector(".searchbar");
+        const divButton = document.querySelector(".btn").addEventListener("click" , () => {
+            showWeatherInfo(searchBox.value);
+        });
+
+
+        const citySearch = document.querySelector(".weather-search");
+        
+        // Search by pressing enter functionality
+        citySearch.addEventListener("submit" , (e) => {
+            e.preventDefault();
+
+            let cityName = document.querySelector(".searchbar");
+            console.log(cityName.value);
+            city = cityName.value;
+            showWeatherInfo(city);
+        });
+
+
+
+        document.body.addEventListener("load", showWeatherInfo("kanpur"));
+        
+    </script>
+
+</body>
+
+</html>

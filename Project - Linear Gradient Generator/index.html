@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linear Gradient Generator</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bungee&family=Bungee+Spice&family=Jost:ital,wght@0,100..900;1,100..900&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bungee&family=Bungee+Spice&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Jost:ital,wght@0,100..900;1,100..900&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+
+    <link rel="icon" href="images/logo-image.png" type="image/png" />
+
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/themes/classic.min.css" /> -->
+
+</head>
+
+<body data-aos="zoom-in">
+
+    <header class="section-navbar">
+
+        <div class="logo-and-text">
+            <div class="logo"><img src="images/logo-image.png" alt="website logo"></div>
+            <h1> CSS Gradients </h1>
+        </div>
+
+        <div class="gradient-options">
+
+            <div class="gradient">
+                <h3 style=" text-decoration: underline; "> <a href="index.html"> Gradient </a> </h3>
+            </div>
+
+            <div class="threeColor">
+                <h3> <a href="gradient.html"> 3-Color-Gradient </a></h3>
+            </div>
+
+        </div>
+
+    </header>
+
+    <section class="section-controls">
+        <h1 class="main-heading"> Generate Beautiful CSS Gradients Instantly </h1>
+        <p> Choose orientation </p>
+
+        <div class="direction">
+            <div class="up" data-aos="fade-left">
+                <i class="fa-solid fa-arrow-up"></i>
+            </div>
+
+            <div class="right" data-aos="fade-left">
+                <i class="fa-solid fa-arrow-right"></i>
+            </div>
+
+            <div class="down" data-aos="fade-left">
+                <i class="fa-solid fa-arrow-down"></i>
+            </div>
+
+            <div class="left" data-aos="fade-left">
+                <i class="fa-solid fa-arrow-left"></i>
+            </div>
+
+            <div class="right-top">
+                <i class="fa-solid fa-arrow-up"></i>
+            </div>
+
+            <div class="right-bottom" data-aos="fade-right">
+                <i class="fa-solid fa-arrow-up"></i>
+            </div>
+
+            <div class="left-bottom" data-aos="fade-right">
+                <i class="fa-solid fa-arrow-up"></i>
+            </div>
+
+            <div class="left-top" data-aos="fade-right">
+                <i class="fa-solid fa-arrow-up"></i>
+            </div>
+
+            <div class="circular" data-aos="fade-right">
+                <i class="fa-solid fa-rotate-right"></i>
+            </div>
+
+
+        </div>
+
+        <p class="select-colors">
+            Select colors
+        </p>
+
+        <div class="color-buttons">
+            <button class="left-button" id="colorBtn1" data-aos="fade-left" data-aos-delay="150"> <input type="color"
+                    id="colorPicker1" value="#ea40ed"> Color 1
+            </button>
+
+            <button class="right-button" id="colorBtn2" data-aos="fade-right" data-aos-delay="150"> <input type="color"
+                    id="colorPicker2" value="#49d5df"> Color 2
+            </button>
+
+        </div>
+
+        <div class="generate-gradient-button">
+            <button class="generate-button"> <i class="fa-solid fa-rocket"></i>&nbsp; Generate </button>
+        </div>
+
+        <div class="css-code">
+            <h2> CSS Code: </h2>
+            <div class="copy-code">
+                background-image: linear-gradient(to right , #ea40ed , #49d5df);
+            </div>
+
+            <!-- to display "✅ Copied to clipboard!" -->
+            <p id="copyMessage"
+                style="color: rgb(255, 255, 255); font-size: 2rem; opacity: 0; transition: opacity 0.3s; font-weight: 500 ">
+                ✅ Copied to clipboard!
+            </p>
+        </div>
+    </section>
+
+    <div class="full-gradient">
+        <i class="fa-solid fa-up-right-and-down-left-from-center"></i>
+    </div>
+
+
+    <script>
+
+        const leftButtonInput = document.getElementById("colorPicker1");
+        const rightButtonInput = document.getElementById("colorPicker2");
+
+        const leftButton = document.querySelector(".left-button");
+        const rightButton = document.querySelector(".right-button");
+
+        const leftColor = leftButtonInput.value;
+        const rightColor = rightButtonInput.value;
+
+        const replaceCode = document.querySelector(".copy-code");
+
+        let copyDiv = document.querySelector(".copy-code");
+
+        document.querySelector(".left-button").addEventListener("click", () => {
+            leftButtonInput.click();
+
+            setInterval(() => {
+                leftButton.style.backgroundColor = leftButtonInput.value;
+            }, 10)
+
+        })
+
+        document.querySelector(".right-button").addEventListener("click", () => {
+            rightButtonInput.click();
+
+            setInterval(() => {
+                rightButton.style.backgroundColor = rightButtonInput.value;
+
+            }, 10)
+
+        });
+
+        // Use `let` so we can change the orientation dynamically
+        let orientation = "to right";
+
+
+        // Set orientation when buttons are clicked
+        document.querySelector(".up").addEventListener("click", () => {
+            orientation = "to top";
+        });
+        document.querySelector(".right").addEventListener("click", () => {
+            orientation = "to right";
+        });
+        document.querySelector(".down").addEventListener("click", () => {
+            orientation = "to bottom";
+        });
+        document.querySelector(".left").addEventListener("click", () => {
+            orientation = "to left";
+        });
+        document.querySelector(".right-top").addEventListener("click", () => {
+            orientation = "to right top";
+        });
+        document.querySelector(".right-bottom").addEventListener("click", () => {
+            orientation = "to right bottom";
+        });
+        document.querySelector(".left-bottom").addEventListener("click", () => {
+            orientation = "to left bottom";
+        });
+        document.querySelector(".left-top").addEventListener("click", () => {
+            orientation = "to left top";
+        });
+        document.querySelector(".circular").addEventListener("click", () => {
+            orientation = "circle";
+        });
+
+
+
+
+        // Function to apply the gradient
+        function updateGradient(color1, color2, orientation) {
+            console.log(orientation);
+            let styleType = "linear";
+            if (orientation === "circle") {
+                styleType = "radial"
+            }
+
+            document.body.style.backgroundImage = styleType + "-gradient(" + orientation + " , " + color1 + " , " + color2 + ")";
+
+
+            replaceCode.innerText = "background-image: " + styleType + "-gradient(" + orientation + " , " + color1 + " , " + color2 + ");";
+        };
+
+        // On button click, fetch latest colors and orientation
+        document.querySelector(".generate-button").addEventListener("click", () => {
+            const color1 = leftButtonInput.value;
+            const color2 = rightButtonInput.value;
+            updateGradient(color1, color2, orientation);
+        });
+
+
+        copyDiv.addEventListener("click", () => {
+            navigator.clipboard.writeText(copyDiv.innerText).then(() => {
+                const msg = document.getElementById("copyMessage");
+                msg.style.opacity = 1;
+
+                setTimeout(() => {
+                    msg.style.opacity = 0;
+                }, 2000);
+            });
+        });
+
+        // full screen gradient section
+        document.querySelector(".full-gradient").addEventListener("click", () => {
+            document.querySelectorAll("body section").forEach(sec => {
+                if (sec.style.display === "none") {
+                    sec.style.display = sec.dataset.display || ""; // restore original
+                } else {
+                    sec.dataset.display = getComputedStyle(sec).display; // save current
+                    sec.style.display = "none";
+                }
+            });
+        });
+
+
+
+
+    </script>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+
+</body>
+
+</html>

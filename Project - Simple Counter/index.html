@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Counter</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <section>
+        <div class="container">
+            <h1>Simple Counter App</h1>
+            <div class="display-number">
+                0
+            </div>
+
+            <div class="normal-btn">
+
+            <div class="increment"> <i class="fa-solid fa-plus"></i>1 </div>
+            <div class="reset"> <i class="fa-solid fa-rotate-right"></i> </div>
+            <div class="decrement"> <i class="fa-solid fa-minus"></i>1 </div>
+
+            </div>
+
+
+            
+            <div class="additional-count">
+
+            <div class="incrementby_10"> <i class="fa-solid fa-plus"></i>10 </div>
+            <div class="decrementby_10"> <i class="fa-solid fa-minus"></i>10 </div>
+
+            </div>
+
+            
+        </div>
+    </section>
+
+    <script>
+
+        let count = localStorage.getItem("count") || 1000;
+
+        document.querySelector(".display-number").innerText = count;
+
+
+        document.querySelector(".increment").addEventListener("click" , () => {
+            ifGreater();
+            count++;
+            localStorage.setItem("count", count);      // save it
+            document.querySelector(".display-number").innerText = count;
+        })
+
+
+        document.querySelector(".decrement").addEventListener("click" , () => {
+            ifGreater();
+            if(count > 0){
+                count--;
+            }
+            localStorage.setItem("count", count);      // save it
+            document.querySelector(".display-number").innerText = count;
+        })
+
+
+        document.querySelector(".reset").addEventListener("click" , () => {
+            ifGreater();
+            count = 0;
+            localStorage.setItem("count", count);      // save it
+            document.querySelector(".display-number").innerText = 0;
+        })
+
+
+        document.querySelector(".incrementby_10").addEventListener("click" , () => {
+            ifGreater();
+            count = Number(count) + 10;
+            localStorage.setItem("count", count);      // save it
+            document.querySelector(".display-number").innerText = count;
+        })
+
+
+        document.querySelector(".decrementby_10").addEventListener("click" , () => {
+            ifGreater();
+            if(count >= 10){
+                count = Number(count) - 10;
+            }
+            localStorage.setItem("count", count);      // save it
+            document.querySelector(".display-number").innerText = count;
+        })
+
+        function ifGreater(){
+            if(count > 999){
+                window.document.querySelector(".display-number").style.fontSize = "10rem";
+            }
+
+            if(count > 9999){
+                window.document.querySelector(".display-number").style.fontSize = "7rem";
+            }
+        }
+
+    </script>
+</body>
+</html>

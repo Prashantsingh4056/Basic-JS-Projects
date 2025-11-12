@@ -1,0 +1,109 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Urbanist";
+}
+
+html{
+    font-size: 62.5%;
+}
+
+:root{
+    /* --theme-color : blue; */
+    /* --theme-color : rgb(198, 198, 55); */
+    /* --theme-color : rgb(195, 37, 37); */
+    --theme-color : rgb(104, 222, 20);
+}
+
+section{
+    background-color: #020224;
+    height: 100vh;
+    min-height: 70rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+}
+
+.container{
+    
+    background-color: #03033e;
+    position: relative;
+    padding: 3rem 3rem;
+    border-radius: 2rem;
+    z-index: 1;
+    border: 0.3rem solid var(--theme-color);
+    box-shadow: var(--theme-color) 0px 5px 20px ;
+
+    & h1{
+        color: aliceblue;
+        font-size: 3rem;
+    }
+
+    & .display-number{
+        color: aliceblue;
+        font-size: 12rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 3rem;
+    }
+}
+
+/* .container::before{
+    content: "";
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(to right , cyan , blue , cyan);
+    border-radius: inherit;
+    padding-left: 0.4rem 0.4rem;
+    z-index: -1;
+    opacity: 0.5;
+} */
+
+.normal-btn{
+    display: flex;
+    justify-content: space-between;
+}
+
+.increment,
+.decrement,
+.reset,
+.incrementby_10,
+.decrementby_10{
+    color: aliceblue;
+    background-color: var(--theme-color);
+    padding: 0.5rem 2rem; 
+    font-size: 2.5rem;
+    border-radius: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: scale 0.3s ease;
+
+    &:hover{
+        scale: 1.1;
+    }
+}
+
+.reset{
+    background-color: transparent;
+    border: 0.2rem solid var(--theme-color);
+}
+
+.fa-solid{
+    font-size: 1.8rem;
+    color: aliceblue;
+}
+
+
+div.additional-count{
+    margin-top: 2rem;
+    display: flex;
+    justify-content: space-around;
+}
+

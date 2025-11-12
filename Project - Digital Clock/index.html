@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="assests/images/favicon-img.png">
+    <title>Digital Clock</title>
+</head>
+
+<body>
+    <div class="clock">
+
+        <div class="semicircle">
+
+        </div>
+
+        <div class="container">
+            <div class="theme-and-date">
+                <div class="theme-colors">
+                    <div class="blue">
+
+                    </div>
+
+                    <div class="green">
+
+                    </div>
+
+                    <div class="red">
+
+                    </div>
+
+                    <div class="pink">
+
+                    </div>
+                </div>
+
+                <div class="div">
+
+                <div class="date-display">
+                    <span class="dayNumber font"></span> &nbsp; <span class="month font"></span> &nbsp; <span
+                        class="year font"></span>
+                </div>
+
+                </div>
+            </div>
+
+            <div class="day-and-time">
+                <div class="day">
+                    <span class="font dayName">fri</span>
+                </div>
+
+                <div class="time">
+                    <span class="font hours"></span> <span class="blink">:</span> <span class="font minutes"></span>
+                    <span class="blink">:</span> <span class="font seconds"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="stand">
+
+        </div>
+    </div>
+
+
+    <script>
+
+        document.querySelector(".blue").addEventListener("click", () => {
+            document.documentElement.style.setProperty("--clock-color", "blue");
+        });
+
+        document.querySelector(".green").addEventListener("click", () => {
+            document.documentElement.style.setProperty("--clock-color", "#316e56");
+        });
+
+        document.querySelector(".pink").addEventListener("click", () => {
+            document.documentElement.style.setProperty("--clock-color", "#ab7c4d");
+        });
+
+        document.querySelector(".red").addEventListener("click", () => {
+            document.documentElement.style.setProperty("--clock-color", "red");
+        });
+
+        showTimeAndDate();
+
+        function showTimeAndDate() {
+            const now = new Date();
+            const dayNumber = now.getDate();
+            const day = now.getDay();
+            const month = now.getMonth();
+            const year = now.getFullYear();
+            const hours = String(now.getHours()).padStart(2, "0");
+            const minutes = String(now.getMinutes()).padStart(2, "0");
+            const seconds = String(now.getSeconds()).padStart(2, "0");
+
+            const days = ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"];
+            const monthName = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
+
+            document.querySelector(".hours").innerText = hours;
+            document.querySelector(".minutes").innerText = minutes;
+            document.querySelector(".seconds").innerText = seconds;
+
+            document.querySelector(".dayName").innerText = days[day - 1];
+            document.querySelector(".dayNumber").innerText = dayNumber;
+            document.querySelector(".month").innerText = monthName[month];
+            document.querySelector(".year").innerText = year;
+
+        }
+
+        setInterval(showTimeAndDate, 1000);
+
+    </script>
+</body>
+
+</html>

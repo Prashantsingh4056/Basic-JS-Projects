@@ -1,0 +1,454 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Urbanist";
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body{
+    width: 100%;
+    height: 100vh;
+    background-image: linear-gradient(to right , #ea40ed , #49d5df);
+    background-size: contain;
+    position: relative;
+}
+
+:root{
+    --selection-color : #5bc7b9
+}
+
+::selection{
+    color: white;
+    background-color: var(--selection-color);
+}
+
+.section-navbar{
+    display: flex;
+    /* padding-left: 0rem; */
+    height: 8rem;
+    justify-content: space-around;
+    align-items: center;
+    /* border: 2px solid red; */
+    background-color: rgba(255,255,255,0.2);
+
+    & h1{
+        font-size: 4rem;
+        color: white;
+    }
+}
+
+/** UPGRADES */
+
+.threeColor h3{
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    position: relative;
+
+    &::after{
+        content: "NEW";
+        color: rgb(255, 255, 255);
+        /*width: 2rem;
+        height: 3rem;
+        */position: absolute;
+        font-size: 1.3rem;
+        top: -2rem;
+        left: 12rem;
+        padding: 0.1rem;
+        background-color: rgb(249, 7, 156);
+        border-radius: 0.4rem;
+        -webkit-border-radius: 0.4rem;
+        -moz-border-radius: 0.4rem;
+        -ms-border-radius: 0.4rem;
+        -o-border-radius: 0.4rem;
+    }
+}
+
+a{
+    text-decoration: none;
+    color: white;
+}
+
+.logo-and-text{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo{
+    width: 6rem;
+    height: 6rem;
+    background-color: rgb(245, 248, 244);
+    overflow: hidden;
+    margin-right: 3rem;
+    border: none;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}
+
+.logo img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.gradient-options{
+    display: flex;
+    /* justify-content: space-around; */
+    /* border: 2px solid red; */
+    gap: 5rem;
+    
+    & .gradient{
+    color: white;
+    font-size: 1.7rem;
+    cursor: pointer;
+    }
+}
+
+.section-controls {
+    line-height: 1.5;
+    margin-top: 10rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-heading {
+    font-weight: 900;
+    font-size: 4rem;
+    color: white;
+    text-shadow: 4px 4px 0px #a3a3a3;
+    padding: 0 1.5rem 0 1.5rem;
+}
+
+p{  
+    margin-top: 1.7rem;
+    font-size: 2rem;
+    color: white;
+    font-weight: 800;
+}
+
+
+
+.direction{
+    margin-top: 1.5rem;
+    display: flex;
+    width: 40rem;
+    justify-content: space-between;
+    /* border: 2px solid red; */
+
+    & div{
+        width: 3.5rem;
+        height: 3.5rem;
+        /* border: 2px solid white; */
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
+        -ms-border-radius: 50%;
+        -o-border-radius: 50%;
+    }
+}
+
+.fa-solid {
+    font-weight: 900;
+    font-size: 1.5rem;
+    color: white;
+    /* rotate: 45deg; */
+}
+
+/**   Tilted directions   */
+.direction {
+
+    & .right-top .fa-solid{
+        rotate: 45deg;
+    }
+
+    & .right-bottom .fa-solid {
+        rotate: 135deg;
+    }
+
+    & .left-bottom .fa-solid {
+        rotate: 225deg;
+    }
+
+    & .left-top .fa-solid {
+        rotate: 315deg;
+    }
+
+
+}
+
+
+.color-buttons{
+    margin-top: 2.3rem;
+    display: flex;
+    justify-content: space-between;
+    width: 40rem;
+    gap: 4rem;
+    /* border: 2px solid red ; */
+    
+}
+
+.color-buttons button{
+    width: 15rem;
+    height: 5rem;
+    border: none;
+    font-size: 2rem;
+    color: white;
+    cursor: pointer;
+    text-transform: uppercase;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 4rem;
+    -webkit-border-radius: 4rem;
+    -moz-border-radius: 4rem;
+    -ms-border-radius: 4rem;
+    -o-border-radius: 4rem;
+
+    transition: all 0.3s linear;
+    -webkit-transition: all 0.3s linear;
+    -moz-transition: all 0.3s linear;
+    -ms-transition: all 0.3s linear;
+    -o-transition: all 0.3s linear;
+
+
+    &:hover{
+        box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
+    }
+}
+
+.generate-gradient-button{
+    margin-top: 2rem;
+}
+
+.generate-gradient-button button{
+    width: 15rem;
+    height: 5rem;
+    cursor: pointer;
+    font-size: 2rem;
+    border: none;
+    color: white;
+    background-color: #5bc7b9;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 4rem;
+    -webkit-border-radius: 4rem;
+    -moz-border-radius: 4rem;
+    -ms-border-radius: 4rem;
+    -o-border-radius: 4rem;
+
+    transition: all 0.3s linear;
+    -webkit-transition: all 0.3s linear;
+    -moz-transition: all 0.3s linear;
+    -ms-transition: all 0.3s linear;
+    -o-transition: all 0.3s linear;
+
+    &:hover{
+       box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px; 
+    }
+}
+
+.left-button{
+    background-color: #ea40ed;
+}
+
+.right-button{
+    background-color: #49d5df;
+}
+
+.middle-button{
+    background-color: rgb(11, 229, 244);
+}
+
+.css-code{
+    margin-top: 2rem;
+}
+
+.css-code {
+    background-color: rgba(255,255,255,0.1);
+    width: 30rem;
+    color: white;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    -webkit-border-radius: 0.5rem;
+    -moz-border-radius: 0.5rem;
+    -ms-border-radius: 0.5rem;
+    -o-border-radius: 0.5rem;
+}
+
+.css-code{
+    width: 50rem;
+    border-left: 0.4rem solid white;
+    margin-bottom: 3rem;
+
+    & h2{
+        font-size: 2rem;
+    }
+
+    & div{
+        font-size: 1.5rem;
+        font-family: 'JetBrains Mono', monospace;
+    }
+}
+
+#colorPicker1 , #colorPicker2 , #colorPicker{
+    background-color: transparent;
+    border: none;
+    width: 0rem;
+    
+    border-radius: 50rem;
+    -webkit-border-radius: 50rem;
+    -moz-border-radius: 50rem;
+    -ms-border-radius: 50rem;
+    -o-border-radius: 50rem;
+}
+
+.up,
+.left,
+.down,
+.right,
+.circular,
+.left-bottom,
+.left-top,
+.right-bottom,
+.right-top {
+    color: transparent;
+    background-color: transparent;
+    border: none;
+    display: none;
+    width: 3rem;
+    height: 3rem;
+    /* border: 2px solid red; */
+
+    &:hover{
+        border: 0.1rem solid rgba(255,255,255,0.8);
+        background-color: rgba(255,255,255,0.1);
+    }
+}
+
+
+
+/***** 3 color Gradient button Section *****/ 
+
+.left-button-3c{
+    background-color: #ec3292;
+}
+
+.middle-button-3c{
+    background-color: #22cfe2;
+}
+
+.right-button-3c{
+    background-color: #5be859;
+}
+
+
+/***** End 3 color Gradient button Section *****/
+
+
+/***** Section Full Screen *****/ 
+
+.full-gradient{
+    position: absolute;
+    right: 2rem;
+    /* left: 1%; */
+    bottom: 2rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 5rem;
+    aspect-ratio: 1;
+    background-color: white;
+    border-radius: 1.5rem;
+    -webkit-border-radius: 1.5rem;
+    -moz-border-radius: 1.5rem;
+    -ms-border-radius: 1.5rem;
+    -o-border-radius: 1.5rem;
+}
+
+.full-gradient{
+
+    & i{
+        color: black;
+        font-size: 2.5rem;
+    }
+}
+
+/***** End Full Screen Section *****/
+
+
+
+
+
+
+
+
+/***** Media Queries Section *****/ 
+
+@media (width < 860px) {
+    html {
+        font-size: 56.25%;
+    }
+
+    .section-controls {
+        margin-top: 5rem;
+    }
+
+    .css-code {
+        width: 90%;
+    }
+}
+
+@media (width < 700px){
+    .section-navbar{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        /* justify-content: center; */
+    }
+
+    .threeColor h3{
+        margin-top: 1.5rem;
+    }
+
+    .section-navbar{
+        height: 12rem;
+    }
+
+    .gradient-options {
+        display: flex;
+        align-items: center;
+        /* border: 2px solid red; */
+
+        & .gradient{
+            margin-top: 1.7rem;
+        }
+    }
+
+    .main-heading{
+        text-align: center;
+    }
+}
+
+@media (width < 400px){
+    html{
+        font-size: 50%;
+    }
+}
+
+/***** End Media Queries Section *****/
+
+
+
+
